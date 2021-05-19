@@ -2,9 +2,10 @@ const command = config => {
   const args = [
     '--terse',
     '--fields',
-    'ssid,bssid,mode,chan,freq,signal,security,wpa-flags,rsn-flags',
+    'active,ssid,bssid,mode,chan,freq,signal,security,wpa-flags,rsn-flags',
     'device',
     'wifi',
+    'rescan',
     'list'
   ];
 
