@@ -5,8 +5,7 @@ const rescan = require('./linux/scan/rescan.js');
 const parse = require('./linux/scan/parser');
 
 const scanWifi = (config) =>{
-  execute(rescan);
-  setTimeout(execute(command(config)).then(output => parse(output)),5000);
+  execute(rescan).then(execute(command(config))).then(output => parse(output));
 
 }
 
