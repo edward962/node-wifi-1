@@ -2,7 +2,7 @@ const command = config => {
   const args = [
     '--terse',
     '--fields',
-    'active,ssid,bssid,mode,chan,freq,signal,security,wpa-flags,rsn-flags',
+    'ssid,bssid,mode,chan,freq,signal,security,wpa-flags,rsn-flags',
     'device',
     'wifi',
     'list'
