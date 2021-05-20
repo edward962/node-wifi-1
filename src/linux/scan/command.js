@@ -2,12 +2,12 @@ const command = config => {
   const args = [
     '--terse',
     '--fields',
-    'active,ssid,bssid,mode,chan,freq,signal,security,wpa-flags,rsn-flags',
-    'device',
-    'wifi',
-    'rescan',
+  'active,ssid,bssid,mode,chan,freq,signal,security,wpa-flags,rsn-flags',
+    'd',
+    'w',
     'list'
   ];
+
 
   if (config.iface) {
     args.push('ifname');
@@ -17,7 +17,7 @@ const command = config => {
   return {
     cmd: 'nmcli',
     args
-  };
+  }
 };
 
 module.exports = command;

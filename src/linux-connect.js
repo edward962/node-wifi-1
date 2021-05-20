@@ -3,6 +3,7 @@ var env = require('./env');
 
 function connectToWifi(config, ap, callback) {
   var args = [];
+  if(ap.mode == "manual"){
   args.push('-w');
   args.push('10');
   args.push('device');
@@ -11,6 +12,49 @@ function connectToWifi(config, ap, callback) {
   args.push(ap.ssid);
   args.push('password');
   args.push(ap.password);
+  args.push('&&');
+  args.push('connection');
+  args.push('m');
+  args.push(ap.ssid);
+  args.push('ipv4.method');
+  args.push('manual');
+  args.push('ip4');
+  args.push(ap.ip);
+  args.push('gw4');
+  args.push(ap.gateway);
+  // args.push('&&');
+  // args.push('nmcli');
+  // args.push('-t');
+  // args.push('-f');
+  // args.push('TYPE,DEVICE');
+  // args.push('device');
+  // args.push('status');
+  // args.push('|');
+  // args.push('grep');
+  // args.push('wifi');
+  args.push('&&');
+  args.push('nmcli');
+  args.push('device');
+  args.push('reapply');
+  args.push('wlp3s0');
+  }
+  else{
+    args.push('-w');
+    args.push('10');
+    args.push('device');
+    args.push('wifi');
+    args.push('connect');
+    args.push(ap.ssid);
+    args.push('password');
+    args.push(ap.password);
+    args.push('&&');
+    args.push('nmcli');
+    args.push('connection');
+    args.push('m');
+    args.push([ap.ssid]);
+    args.push('ipv4.method');
+    args.push('auto');
+  }
 
   if (config.iface) {
     args.push('ifname');
